@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { AiFillEye, AiFillEyeInvisible, AiOutlineUser } from 'react-icons/ai'
+import { Link } from 'react-router-dom'
 
 const Auth = () => {
 	const [isHide, setIsHide] = useState(true)
@@ -7,11 +8,13 @@ const Auth = () => {
 	return (
 		<div className='flex justify-center items-center h-screen'>
 			<form className='border border-gray-300 p-4 text-center'>
-				<img
-					src='/images/StockX-Logo1.png'
-					className='w-[180px] mx-auto mb-4 ml-30'
-					alt='Logo'
-				/>
+				<Link to='/'>
+					<img
+						src='/images/StockX-Logo1.png'
+						className='w-[180px] mx-auto mb-4 ml-30'
+						alt='Logo'
+					/>
+				</Link>
 				<div className='flex justify-center m-5'>
 					<button className='font-bold p-4 text-zinc-500'>Sign Up</button>
 					<button className='p-4 font-bold relative'>
@@ -28,6 +31,7 @@ const Auth = () => {
 						<input
 							className='border border-zinc-300 w-[300px] h-[40px] placeholder:text-stone-600 p-3'
 							placeholder='Password'
+							type={isHide ? 'password' : 'text'}
 						></input>
 						<button
 							type='button'

@@ -1,7 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using StockAPI.Domain.DataBase;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+var databaseConnection = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<Context>(option => option.UseNpgsql(databaseConnection));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
