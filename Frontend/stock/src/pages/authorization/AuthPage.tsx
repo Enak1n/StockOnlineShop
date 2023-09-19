@@ -11,7 +11,7 @@ const AuthPage = () => {
 			<form className='border border-gray-300 p-4 text-center'>
 				<Link to='/'>
 					<img
-						src='/images/StockX-Logo1.png'
+						src='/images/StockX-Logo.png'
 						className='w-[180px] mx-auto mb-4 ml-30'
 						alt='Logo'
 					/>

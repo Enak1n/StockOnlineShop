@@ -9,12 +9,10 @@ namespace StockAPI.Domain.UnitOfWork
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private Context _context;
-        private IMemoryCache _memoryCache;
 
-        public GenericRepository(Context context, IMemoryCache cache)
+        public GenericRepository(Context context)
         {
             _context = context;
-            _memoryCache = cache;
         }
 
         public async Task Add(T entity)

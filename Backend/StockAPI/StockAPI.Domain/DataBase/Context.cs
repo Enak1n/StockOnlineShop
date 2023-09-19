@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Npgsql;
 using StockAPI.Domain.Entities;
 
 namespace StockAPI.Domain.DataBase

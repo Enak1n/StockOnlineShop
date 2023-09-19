@@ -7,7 +7,7 @@ namespace StockAPI.Domain.UnitOfWork
 {
     public class ItemRepository : GenericRepository<Item>, IItemRepository
     {
-        public ItemRepository(Context context, IMemoryCache cache) : base(context, cache)
+        public ItemRepository(Context context) : base(context)
         {
             
         }

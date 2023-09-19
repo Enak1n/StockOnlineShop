@@ -12,7 +12,7 @@ namespace StockAPI.Domain.UnitOfWork
 {
     public class UserRepository : GenericRepository<User>, IUserRepository
     {
-        public UserRepository(Context context, IMemoryCache cache) : base(context, cache) 
+        public UserRepository(Context context) : base(context) 
         {
             
         }

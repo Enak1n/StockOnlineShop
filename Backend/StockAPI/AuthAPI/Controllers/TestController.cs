@@ -17,7 +17,7 @@ namespace AuthAPI.Controllers
         [HttpGet]
         public IActionResult Test() 
         {
-            var all = _context.Items.ToList();
+            var all = _context.Users.ToList();
             return Ok(all);
         }
     }

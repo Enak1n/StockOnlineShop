@@ -8,9 +8,9 @@ namespace StockAPI.Domain.UnitOfWork.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        IUserRepository UserRepository { get; }
-        IItemRepository ItemRepository { get; }
+        IUserRepository Users { get; }
+        IItemRepository Items { get; }
 
-        Task SaveAsyns();
+        Task Save();
     }
 }
