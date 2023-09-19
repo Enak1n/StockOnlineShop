@@ -1,7 +1,7 @@
 import React from 'react'
 import './App.css'
 import Header from './app/components/layout/Header/Header'
-import Auth from './pages/authorization/Auth'
+import Auth from './pages/authorization/AuthPage'
 import AppRouter from './app/components/AppRouter'
 import { BrowserRouter } from 'react-router-dom'
 

@@ -1,7 +1,7 @@
-import Auth from "../../pages/authorization/Auth";
-import Header from "../components/layout/Header/Header";
+import AuthPage from '../../pages/authorization/AuthPage'
+import Header from '../components/layout/Header/Header'
 
 export const publicRoutes = [
-	{ path: '/auth', component: Auth, exact: true },
+	{ path: '/auth', component: AuthPage, exact: true },
 	{ path: '/', component: Header, exact: true },
 ]

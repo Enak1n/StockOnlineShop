@@ -9,7 +9,6 @@ namespace StockAPI.Domain.DataBase
         public Context(DbContextOptions<Context> options) :
                base(options)
         {
-            Database.EnsureCreated();
         }
 
         public DbSet<Item> Items { get; set; }

@@ -2,8 +2,9 @@ import { useState } from 'react'
 import { AiFillEye, AiFillEyeInvisible, AiOutlineUser } from 'react-icons/ai'
 import { Link } from 'react-router-dom'
 
-const Auth = () => {
+const AuthPage = () => {
 	const [isHide, setIsHide] = useState(true)
+	const [isLogIn, setIsLogIn] = useState(true)
 
 	return (
 		<div className='flex justify-center items-center h-screen'>
@@ -15,13 +16,32 @@ const Auth = () => {
 						alt='Logo'
 					/>
 				</Link>
-				<div className='flex justify-center m-5'>
-					<button className='font-bold p-4 text-zinc-500'>Sign Up</button>
-					<button className='p-4 font-bold relative'>
-						Log In
-						<div className='absolute bottom-0 left-0 w-full h-0.5 bg-black'></div>
-					</button>
-				</div>
+				{isLogIn && (
+					<div className='flex justify-center m-5'>
+						<button
+							className='font-bold p-4 text-zinc-500'
+							onClick={() => setIsLogIn(false)}
+						>
+							Sign Up
+						</button>
+						<div className='border-b-2 border-zinc-900'>
+							<button className='p-4 font-bold relative'>Log In</button>
+						</div>
+					</div>
+				)}
+				{!isLogIn && (
+					<div className='flex justify-center m-5'>
+						<div className='border-b-2 border-zinc-900'>
+							<button className='p-4 font-bold relative'>Sign Up</button>
+						</div>
+						<button
+							className='font-bold p-4 text-zinc-500'
+							onClick={() => setIsLogIn(true)}
+						>
+							Log In
+						</button>
+					</div>
+				)}
 				<div>
 					<input
 						className='border border-zinc-300 w-full mb-3 h-[40px] placeholder:text-stone-600 p-3'
@@ -65,4 +85,4 @@ const Auth = () => {
 	)
 }
 
-export default Auth
+export default AuthPage
