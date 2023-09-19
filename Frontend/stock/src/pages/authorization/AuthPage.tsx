@@ -42,14 +42,17 @@ const AuthPage = () => {
 						</button>
 					</div>
 				)}
-				<div>
+				{isLogIn && (
+					<div>
+					<div>
 					<input
-						className='border border-zinc-300 w-full mb-3 h-[40px] placeholder:text-stone-600 p-3'
+						className='border border-zinc-300 w-[350px] mb-3 h-[40px] placeholder:text-stone-600 p-3'
 						placeholder='Email Address'
 					></input>
+					</div>
 					<div className='relative'>
 						<input
-							className='border border-zinc-300 w-[300px] h-[40px] placeholder:text-stone-600 p-3'
+							className='border border-zinc-300 w-[350px] h-[40px] placeholder:text-stone-600 p-3'
 							placeholder='Password'
 							type={isHide ? 'password' : 'text'}
 						></input>
@@ -74,12 +77,65 @@ const AuthPage = () => {
 					<button className='mt-5 text-zinc-50 bg-zinc-950 w-full font-bold h-[50px] rounded'>
 						Log In
 					</button>
-				</div>
-
-				<span className='text-xs'>Need an acount? </span>
+					<span className='text-xs'>Need an acount? </span>
 				<a className='text-xs text-green-700 underline' href=''>
 					Sign Up
 				</a>
+				</div>
+				)}
+				
+				{!isLogIn && (
+					<div>
+					<input
+						className='border border-zinc-300 w-[350px] mb-3 h-[40px] placeholder:text-stone-600 p-3'
+						placeholder='First Name'
+					></input>
+					<div>
+					<input
+						className='border border-zinc-300 w-[350px] mb-3 h-[40px] placeholder:text-stone-600 p-3'
+						placeholder='Last Name'
+					></input>
+					</div>
+					<input
+						className='border border-zinc-300 w-[350px] mb-3 h-[40px] placeholder:text-stone-600 p-3'
+						placeholder='Email Address'
+					></input>
+					<div className='relative'>
+						<input
+							className='border border-zinc-300 w-[350px] h-[40px] placeholder:text-stone-600 p-3'
+							placeholder='Password'
+							type={isHide ? 'password' : 'text'}
+						></input>
+						<button
+							type='button'
+							onClick={() => {
+								setIsHide(!isHide)
+							}}
+							className='absolute top-[14.5px] right-[30px]'
+						>
+							{!isHide ? (
+								<span className='w-7 h-7 text-stone-400'>
+									<AiFillEyeInvisible />
+								</span>
+							) : (
+								<span className='w-7 h-7'>
+									<AiFillEye />
+								</span>
+							)}
+						</button>
+					</div>
+
+					<p className='font-bold text-xs m-3'>At least 8 characters, 1 uppercase letter, 1 number and 1 symbol</p>
+
+					<button className='mt-1 text-zinc-50 bg-zinc-950 w-full font-bold h-[50px] rounded'>
+						Sign Up
+					</button>
+					<span className='text-xs'>Already have an account? </span>
+				<a className='text-xs text-green-700 underline' href=''>
+					Log In
+				</a>
+					</div>
+				)}
 			</form>
 		</div>
 	)
