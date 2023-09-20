@@ -1,9 +1,6 @@
 export interface IUser{
-	id: string
-	shoeSize: number
-	userName: string
+	firstName: string
+	lastName: string
 	emailAddress: string
 	password: string
-	activeBuyingId: string[]
-	activeSellingId: string[]
 }

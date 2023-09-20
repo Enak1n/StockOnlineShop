@@ -1,18 +1,9 @@
 import { BellOutlined } from '@ant-design/icons'
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
-import AuthService from '../../../../../services/AuthService'
+
 
 const Navigation: FC = () => {
-	const testHandel = async () =>{
-		try{
-			const response = await AuthService.test()
-			console.log(response.data)
-		}
-		catch(e: any){
-			console.log(e)
-		}
-	}
 	return (
 		<div className='p-6 pr-40'>
 			<ul className='flex'>
@@ -45,7 +36,9 @@ const Navigation: FC = () => {
 
 				<li className='ml-10 border border-gray-900'>
 					<Link to='/auth'>
-						<button className='w-[80px] h-[30px] flex justify-center items-center font-bold hover:hover:bg-zinc-900 hover:text-gray-50 ease-in duration-200' onClick={testHandel}>
+						<button
+							className='w-[80px] h-[30px] flex justify-center items-center font-bold hover:hover:bg-zinc-900 hover:text-gray-50 ease-in duration-200'
+						>
 							Login
 						</button>
 					</Link>
