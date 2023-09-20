@@ -1,5 +1,6 @@
 using AuthAPI.Helpers;
 using AuthAPI.Services;
+using AuthAPI.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using StockAPI.Domain.DataBase;
 using StockAPI.Domain.UnitOfWork;

@@ -1,6 +1,6 @@
 ﻿using AuthAPI.Models;
 
-namespace AuthAPI.Services
+namespace AuthAPI.Services.Interfaces
 {
     public interface IAuthService
     {

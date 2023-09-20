@@ -1,8 +1,6 @@
 ﻿using AuthAPI.Models;
-using AuthAPI.Services;
+using AuthAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using StockAPI.Domain.UnitOfWork.Interfaces;
-using System.ComponentModel.DataAnnotations;
 
 namespace AuthAPI.Controllers
 {
@@ -27,8 +25,8 @@ namespace AuthAPI.Controllers
 
             try
             {
-                return Ok();
                 await _authService.Register(user);
+                return Ok();
             }
             catch(Exception ex)
             {
