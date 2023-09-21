@@ -11,7 +11,7 @@ namespace AuthAPI.Models
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "Email can't be empty")]
-        [EmailAddress]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string EmailAddress { get; set; }
 
         [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,15}$", ErrorMessage = "At least 8 characters, 1 uppercase letter, 1 number and 1 symbol")]

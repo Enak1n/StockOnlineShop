@@ -14,9 +14,15 @@ const AuthPage = () => {
 	const [firstName, setFirstName] = useState('')
 	const [lastName, setLastName] = useState('')
 	const [emailAddress, setEmailAddress] = useState('')
+
 	const [password, setPassword] = useState('')
 	const [isHide, setIsHide] = useState(true)
 	const [isLogIn, setIsLogIn] = useState(true)
+
+	const [passwordError, setPasswordError] = useState(null)
+	const [emailAddressError, setEmailAddressError] = useState(null)
+	const [firstNameError, setFirstNameError] = useState(null)
+	const [lastNameError, setLastNameError] = useState(null)
 
 	const handleSignUp = async (event: React.FormEvent) => {
 		event.preventDefault()
@@ -35,11 +41,14 @@ const AuthPage = () => {
 				payload.emailAddress,
 				payload.password
 			)
-			console.log(`Ok {response}`)
 			return response.data
 		} catch (e: any) {
-			console.log(e.response.data.errors.Password)
-		}
+				const errorData = e.response.data;
+				  setPasswordError(errorData.errors.Password ? errorData.errors.Password : null)
+				  setEmailAddressError(errorData.errors.EmailAddress ? errorData.errors.EmailAddress : null)
+				  setFirstNameError(errorData.errors.FirstName ? errorData.errors.FirstName : null)
+				  setLastNameError(errorData.errors.LastName ? errorData.errors.LastName : null)
+				}
 	}
 
 	return (
@@ -125,7 +134,9 @@ const AuthPage = () => {
 							Log In
 						</button>
 						<span className='text-xs'>Need an acount? </span>
-						<a className='text-xs text-green-700 underline' href=''>
+						<a className='text-xs text-green-700 underline' onClick={e => {
+							setIsLogIn(false)
+						}} >
 							Sign Up
 						</a>
 					</div>
@@ -133,6 +144,9 @@ const AuthPage = () => {
 
 				{!isLogIn && (
 					<div>
+												{lastNameError && (
+    <p className='text-red-500 flex flex-left ml-4 mb-2 mt-2 text-xs font-bold '>{lastNameError}</p>
+  )}
 						<input
 							className='border border-zinc-300 w-[350px] mb-3 h-[40px] placeholder:text-stone-600 p-3'
 							placeholder='First Name'
@@ -140,9 +154,13 @@ const AuthPage = () => {
 							onChange={e => {
 								const valueWithoutSpaces = e.target.value.replace(/\s/g, '')
 								setFirstName(valueWithoutSpaces)
+								setFirstNameError(null)
 							}}
 						></input>
 						<div>
+						{firstNameError && (
+    <p className='text-red-500 flex flex-left ml-4 mb-2 mt-2 text-xs font-bold '>{firstNameError}</p>
+  )}
 							<input
 								className='border border-zinc-300 w-[350px] mb-3 h-[40px] placeholder:text-stone-600 p-3'
 								placeholder='Last Name'
@@ -150,9 +168,13 @@ const AuthPage = () => {
 								onChange={e => {
 									const valueWithoutSpaces = e.target.value.replace(/\s/g, '')
 									setLastName(valueWithoutSpaces)
+									setLastNameError(null)
 								}}
 							></input>
 						</div>
+						{emailAddressError && (
+    <p className='text-red-500 flex flex-left ml-4 mb-2 mt-2 text-xs font-bold '>{emailAddressError}</p>
+  )}
 						<input
 							className='border border-zinc-300 w-[350px] mb-3 h-[40px] placeholder:text-stone-600 p-3'
 							placeholder='Email Address'
@@ -160,38 +182,46 @@ const AuthPage = () => {
 							onChange={e => {
 								const valueWithoutSpaces = e.target.value.replace(/\s/g, '')
 								setEmailAddress(valueWithoutSpaces)
+								setEmailAddressError(null)
 							}}
 						></input>
-						<div className='relative'>
-							<input
-								className='border border-zinc-300 w-[350px] h-[40px] placeholder:text-stone-600 p-3'
-								placeholder='Password'
-								value={password}
-								onChange={e => {
-									const valueWithoutSpaces = e.target.value.replace(/\s/g, '')
-									setPassword(valueWithoutSpaces)
-								}}
-								type={isHide ? 'password' : 'text'}
-							></input>
-							<button
-								type='button'
-								onClick={() => {
-									setIsHide(!isHide)
-								}}
-								className='absolute top-[14.5px] right-[30px]'
-							>
-								{!isHide ? (
-									<span className='w-7 h-7 text-stone-400'>
-										<AiFillEyeInvisible />
-									</span>
-								) : (
-									<span className='w-7 h-7'>
-										<AiFillEye />
-									</span>
-								)}
-							</button>
-						</div>
+<div className='relative'>
+  {passwordError && (
+    <p className='text-red-500 flex flex-left ml-4 mb-2 mt-2 text-xs font-bold '>{passwordError}</p>
+  )}
+  <div className='relative'>
+    <input
+      className='border border-zinc-300 w-[350px] h-[40px] placeholder:text-stone-600 p-3 pr-10' // Добавляем правый отступ для кнопки
+      placeholder='Password'
+      value={password}
+      onChange={e => {
+        const valueWithoutSpaces = e.target.value.replace(/\s/g, '');
+        setPassword(valueWithoutSpaces);
+		setPasswordError(null)
+      }}
+      type={isHide ? 'password' : 'text'}
+    />
+    <button
+      type='button'
+      onClick={() => {
+        setIsHide(!isHide);
+      }}
+      className='absolute top-0 right-0 h-full pr-7' // Абсолютное позиционирование и выравнивание справа
+    >
+      {!isHide ? (
+        <span className='w-7 h-7 text-stone-400'>
+          <AiFillEyeInvisible />
+        </span>
+      ) : (
+        <span className='w-7 h-7'>
+          <AiFillEye />
+        </span>
+      )}
+    </button>
+  </div>
+</div>
 
+						
 						<p className='font-bold text-xs m-3'>
 							At least 8 characters, 1 uppercase letter, 1 number and 1 symbol
 						</p>
@@ -204,7 +234,9 @@ const AuthPage = () => {
 							Sign Up
 						</button>
 						<span className='text-xs'>Already have an account? </span>
-						<a className='text-xs text-green-700 underline' href=''>
+						<a className='text-xs text-green-700 underline' onClick={e => {
+							setIsLogIn(true)
+						}}>
 							Log In
 						</a>
 					</div>
