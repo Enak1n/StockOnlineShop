@@ -1,8 +1,10 @@
 ﻿using AuthAPI.Models;
 using AuthAPI.Services.Interfaces;
 using AutoMapper;
+using Microsoft.IdentityModel.Tokens;
 using StockAPI.Domain.Entities;
 using StockAPI.Domain.UnitOfWork.Interfaces;
+using System.Security.Claims;
 
 namespace AuthAPI.Services
 {
@@ -11,17 +13,39 @@ namespace AuthAPI.Services
         private readonly IUnitOfWork _unitOfWork;
         private IMapper _mapper;
         private IPasswordHasher _passwordHasher;
+        private ITokenService _tokenService;
 
-        public AuthService(IUnitOfWork unitOfWork, IMapper mapper, IPasswordHasher passwordHasher)
+        public AuthService(IUnitOfWork unitOfWork, IMapper mapper, IPasswordHasher passwordHasher, ITokenService tokenService)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
             _passwordHasher = passwordHasher;
+            _tokenService = tokenService;
         }
 
-        public Task Login(string login, string password)
+        public async Task<AuthenticateResponse> Login(string login, string password)
         {
-            throw new NotImplementedException();
+            var user = await _unitOfWork.Users.Find(u => u.EmailAddress == login);
+            if (_passwordHasher.Verify(user.Password, password))
+            {
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+                };
+
+                var accessToken = _tokenService.GenerateAccessToken(claims);
+                var refreshToken = _tokenService.GenerateRefreshToken();
+
+                return new AuthenticateResponse
+                {
+                    AccessToken = accessToken,
+                    RefreshToken = refreshToken
+                };
+            }
+            else
+            {
+                throw new SecurityTokenException("Invalid Email address or password!");
+            }
         }
 
         public async Task Register(UserRegistration user)

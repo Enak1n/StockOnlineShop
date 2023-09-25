@@ -1,6 +1,7 @@
 ﻿using AuthAPI.Models;
 using AuthAPI.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace AuthAPI.Controllers
 {
@@ -31,6 +32,20 @@ namespace AuthAPI.Controllers
             catch(Exception ex)
             {
                 return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Login(string emailAddress, string password)
+        {
+            try
+            {
+                var response = await _authService.Login(emailAddress, password);
+                return Ok();
+            }
+            catch(SecurityTokenException ex)
+            {
+                return NotFound(ex.Message);
             }
         }
     }

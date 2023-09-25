@@ -40,7 +40,9 @@ const SignUp = () => {
 				payload.emailAddress,
 				payload.password
 			)
-			return response.data
+			if(response.status === 200){
+				window.location.reload()
+			}
 		} catch (e: any) {
 			const errorData = e.response.data
 			setPasswordError(
