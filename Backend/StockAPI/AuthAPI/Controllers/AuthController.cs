@@ -41,7 +41,7 @@ namespace AuthAPI.Controllers
             try
             {
                 var response = await _authService.Login(emailAddress, password);
-                return Ok();
+                return Ok(response);
             }
             catch(SecurityTokenException ex)
             {
