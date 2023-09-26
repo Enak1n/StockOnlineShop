@@ -15,4 +15,14 @@ export default class AuthService {
 			password,
 		})
 	}
+
+	static async login(
+		emailAddress: string,
+		password: string
+	): Promise<AxiosResponse> {
+		return $api.post('/Auth/Login', {
+			emailAddress,
+			password
+		})
+	}
 }

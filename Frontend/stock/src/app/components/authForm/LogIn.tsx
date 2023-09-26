@@ -1,11 +1,37 @@
 import { useState, FC } from 'react'
 import { AiFillEye, AiFillEyeInvisible, AiOutlineUser } from 'react-icons/ai'
-import { Link } from 'react-router-dom'
+import AuthService from '../../../services/AuthService'
+
+interface ILogInData {
+	emailAddress: string
+	password: string
+}
 
 const LogIn = () => {
 	const [isHide, setIsHide] = useState(true)
 	const [emailAddress, setEmailAddress] = useState('')
 	const [password, setPassword] = useState('')
+
+	const [error, setError] = useState('')
+
+	const handleLogIn = async (event: React.FormEvent) => {
+		event.preventDefault()
+
+		const payload: ILogInData = {
+			emailAddress: emailAddress,
+			password: password,
+		}
+
+		try {
+			const response = await AuthService.login(
+				payload.emailAddress,
+				payload.password
+			)
+			window.location.href = '/'
+		} catch (e: any) {
+			setError(e.response.data)
+		}
+	}
 	return (
 		<div>
 			<div>
@@ -15,6 +41,7 @@ const LogIn = () => {
 					onChange={e => {
 						const valueWithoutSpaces = e.target.value.replace(/\s/g, '')
 						setEmailAddress(valueWithoutSpaces)
+						setError('')
 					}}
 				></input>
 			</div>
@@ -25,6 +52,7 @@ const LogIn = () => {
 					onChange={e => {
 						const valueWithoutSpaces = e.target.value.replace(/\s/g, '')
 						setPassword(valueWithoutSpaces)
+						setError('')
 					}}
 					type={isHide ? 'password' : 'text'}
 				></input>
@@ -45,8 +73,17 @@ const LogIn = () => {
 						</span>
 					)}
 				</button>
+				{error && (
+					<p className='text-red-500 flex flex-left mb-2 mt-2 text-xs font-bold '>
+						{error}
+					</p>
+				)}
 			</div>
-			<button className='mt-5 text-zinc-50 bg-zinc-950 w-full font-bold h-[50px] rounded '>
+
+			<button
+				className='mt-5 text-zinc-50 bg-zinc-950 w-full font-bold h-[50px] rounded '
+				onClick={handleLogIn}
+			>
 				Log In
 			</button>
 		</div>

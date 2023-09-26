@@ -3,32 +3,32 @@ import { FC } from 'react'
 import { Link } from 'react-router-dom'
 
 
-const Navigation: FC = () => {
+const Navigation = () => {
 	return (
 		<div className='p-6 pr-40'>
 			<ul className='flex'>
 				<li>
-					<a href='/sneakers' className='p-2.5 hover:text-gray-500'>
+					<a className='p-2.5 hover:text-gray-500'>
 						Browse
 					</a>
 				</li>
 				<li>
-					<a href='/news' className='p-2.5 hover:text-gray-500'>
+					<a className='p-2.5 hover:text-gray-500'>
 						News
 					</a>
 				</li>
 				<li>
-					<a href='/about' className='p-2.5 hover:text-gray-500'>
+					<a className='p-2.5 hover:text-gray-500'>
 						About
 					</a>
 				</li>
 				<li>
-					<a href='/help' className='p-2.5 hover:text-gray-500'>
+					<a className='p-2.5 hover:text-gray-500'>
 						Help
 					</a>
 				</li>
 				<li>
-					<a href='/sell' className='p-2.5 hover:text-gray-500'>
+					<a className='p-2.5 hover:text-gray-500'>
 						Sell
 					</a>
 				</li>

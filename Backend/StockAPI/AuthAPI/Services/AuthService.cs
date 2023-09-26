@@ -26,6 +26,12 @@ namespace AuthAPI.Services
         public async Task<AuthenticateResponse> Login(string login, string password)
         {
             var user = await _unitOfWork.Users.Find(u => u.EmailAddress == login);
+
+            if(user == null)
+            {
+                throw new SecurityTokenException("Invalid Email Address or password!");
+            }
+
             if (_passwordHasher.Verify(user.Password, password))
             {
                 var claims = new List<Claim>
@@ -50,6 +56,13 @@ namespace AuthAPI.Services
 
         public async Task Register(UserRegistration user)
         {
+            var emailAddress = await _unitOfWork.Users.Find(u => u.EmailAddress == user.EmailAddress);
+
+            if(emailAddress == null)
+            {
+                throw new Exception("Email Address has been already used!");
+            }
+            
             var customer = _mapper.Map<UserRegistration, User>(user);
             var hash = _passwordHasher.Hash(user.Password);
             customer.Password = hash;

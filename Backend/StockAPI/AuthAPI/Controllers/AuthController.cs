@@ -35,12 +35,12 @@ namespace AuthAPI.Controllers
             }
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Login(string emailAddress, string password)
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginRequest loginRequest)
         {
             try
             {
-                var response = await _authService.Login(emailAddress, password);
+                var response = await _authService.Login(loginRequest.EmailAddress, loginRequest.Password);
                 return Ok(response);
             }
             catch(SecurityTokenException ex)
