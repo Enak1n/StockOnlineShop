@@ -12,5 +12,7 @@ namespace StockAPI.Domain.Entities
         public string Password { get; set; }
         public Guid[]? ActiveBuyingId { get; set; }
         public Guid[]? ActiveSellingId { get; set;}
+        public string RefreshToken { get; set; }
+        public DateTime RefreshTokenExpiryTime { get; set; }
     }
 }

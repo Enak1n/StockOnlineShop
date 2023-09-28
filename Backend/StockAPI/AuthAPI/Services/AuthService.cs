@@ -36,7 +36,7 @@ namespace AuthAPI.Services
             {
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
+                    new Claim(ClaimTypes.Name, user.EmailAddress)
                 };
 
                 var accessToken = _tokenService.GenerateAccessToken(claims);

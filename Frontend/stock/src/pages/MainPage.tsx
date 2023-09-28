@@ -1,35 +1,18 @@
+import { Link } from 'react-router-dom'
+import Nav from '../app/components/Nav'
+import { QuestionCircleOutlined } from '@ant-design/icons'
+
 const MainPage = () => {
 	return (
-		<div className='pt-4'>
-			<nav>
-				<div className='flex justify-between'></div>
-				<ul className='flex justify-center font-lobster'>
-					<li className='flex items-center pr-10'>
-						<a>Sneakers</a>
-					</li>
-					<li className='flex items-center pr-10'>
-						<a>Shoes</a>
-					</li>
-					<li className='flex items-center pr-10'>
-						<a>Apparel</a>
-					</li>
-					<li className='flex items-center pr-10'>
-						<a>Electronics</a>
-					</li>
-					<li className='flex items-center pr-10'>
-						<a>Trading Cards</a>
-					</li>
-					<li className='flex items-center pr-10'>
-						<a>Collectibles</a>
-					</li>
-					<li className='flex items-center pr-10'>
-						<a>Accessories</a>
-					</li>
-					<li className='flex items-center pr-6'>
-						<a>Trending Deals</a>
-					</li>
-				</ul>
-			</nav>
+		<div className='mx-auto pt-4 w-[1264px]'>
+			<Nav />
+
+			<div className='p-[250px]'>{/* Carousel */}</div>
+
+			<div className='mx-auto flex'>
+				<h2 className='items-center font-lobster'>Recommend For You</h2>
+				<QuestionCircleOutlined className='ml-2 cursor-pointer'/>
+			</div>
 		</div>
 	)
 }
