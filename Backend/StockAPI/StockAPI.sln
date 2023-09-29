@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthAPI", "AuthAPI\AuthAPI.csproj", "{9C0B7FB4-B0FB-4266-9FAD-F6970CA8260A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthAPI", "AuthAPI\AuthAPI.csproj", "{9C0B7FB4-B0FB-4266-9FAD-F6970CA8260A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StockAPI.Domain", "StockAPI.Domain\StockAPI.Domain.csproj", "{1BAE1D5D-DCA8-4207-B2A0-EB3B17C081FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StockAPI.Domain", "StockAPI.Domain\StockAPI.Domain.csproj", "{1BAE1D5D-DCA8-4207-B2A0-EB3B17C081FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogAPI", "CatalogAPI\CatalogAPI.csproj", "{4ABDCA71-C59C-4197-891F-3DF2D819C751}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{1BAE1D5D-DCA8-4207-B2A0-EB3B17C081FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1BAE1D5D-DCA8-4207-B2A0-EB3B17C081FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1BAE1D5D-DCA8-4207-B2A0-EB3B17C081FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4ABDCA71-C59C-4197-891F-3DF2D819C751}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ABDCA71-C59C-4197-891F-3DF2D819C751}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ABDCA71-C59C-4197-891F-3DF2D819C751}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ABDCA71-C59C-4197-891F-3DF2D819C751}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

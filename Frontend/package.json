@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "antd": "^5.9.3",
+    "guid-typescript": "^1.0.9",
     "react-icons": "^4.11.0"
   }
 }
