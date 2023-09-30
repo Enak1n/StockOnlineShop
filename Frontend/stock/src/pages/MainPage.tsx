@@ -5,6 +5,7 @@ import ItemGrid from '../app/components/ItemGrid'
 import { useEffect, useState } from 'react'
 import ItemService from '../services/ItemService'
 import { IItem } from '../types/IItem'
+import { TbArrowNarrowRight } from 'react-icons/tb'
 import Carousel from '../app/components/carousel/Carousel'
 
 const MainPage = () => {
@@ -48,7 +49,6 @@ const MainPage = () => {
 			<div className='pt-5'>
 				<h2 className='flex font-lobster w-[225px] text-[18px]'>
 					Popular Brands
-					<QuestionCircleOutlined className='ml-2 cursor-pointer' />
 				</h2>
 				<div className='flex flex-row space-x-5 pt-4'>
 					<img src='images/Jordan.webp' />
@@ -59,23 +59,36 @@ const MainPage = () => {
 				</div>
 			</div>
 
-			<div className='pt-8'>
+			<div className='pt-8 flex justify-between items-center mt-6 mb-4'>
 				<h2 className='flex font-lobster w-[225px] text-[18px]'>
 					Trending Sneakers
 					<QuestionCircleOutlined className='ml-2 cursor-pointer' />
 				</h2>
+				<div className='flex items-center ml-auto'>
+					<span className='w-[70px] font-lobster text-green-700'>See All</span>
+					<TbArrowNarrowRight />
+				</div>
 			</div>
+
 			<div className='flex flex-row space-x-4 pt-4'>
 				{trendingSneakers.map(item => (
 					<ItemGrid key={item.id.toString()} item_data={item} sold={true} />
 				))}
 			</div>
 
-			<div className='pt-8'>
+			<div className='pt-7 flex justify-between items-center mt-6 mb-4'>
 				<h2 className='flex font-lobster w-[240px] text-[18px]'>
 					Most Popular Around You
 					<QuestionCircleOutlined className='ml-2 cursor-pointer' />
 				</h2>
+				<Link to='/sneakers'>
+					<div className='flex items-center ml-auto'>
+						<span className='w-[70px] font-lobster text-green-700'>
+							See All
+						</span>
+						<TbArrowNarrowRight />
+					</div>
+				</Link>
 			</div>
 			<div className='flex flex-row space-x-4 pt-4'>
 				{trendingSneakers.map(item => (
@@ -87,9 +100,11 @@ const MainPage = () => {
 				<h2 className='flex font-lobster w-[240px] h-[24px] text-[18px]'>
 					As Seen On Instaram
 				</h2>
-				<h3 className='flex font-light h-[20px]'>Use #GotItOnStockX and you could be featured.</h3>
+				<h3 className='flex font-light h-[20px]'>
+					Use #GotItOnStockX and you could be featured.
+				</h3>
 				<div className='pt-5'>
-					<Carousel/>
+					<Carousel />
 				</div>
 			</div>
 		</div>
