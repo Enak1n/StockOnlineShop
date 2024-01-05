@@ -7,6 +7,7 @@ import ItemService from '../services/ItemService'
 import { IItem } from '../types/IItem'
 import { TbArrowNarrowRight } from 'react-icons/tb'
 import Carousel from '../app/components/carousel/Carousel'
+import MainCarousel from '../app/components/carousel/MainCarousel'
 
 const MainPage = () => {
 	const [recommendSneakers, setRecommendSneakers] = useState<IItem[]>([])
@@ -32,7 +33,9 @@ const MainPage = () => {
 		<div className='mx-auto pt-4 w-[1264px]'>
 			<Nav />
 
-			<div className='p-[250px]'>{/* Carousel */}</div>
+			<div className='pt-3'>
+				<MainCarousel/>
+			</div>
 
 			<div>
 				<h2 className='flex font-lobster w-[225px] text-[18px]'>
