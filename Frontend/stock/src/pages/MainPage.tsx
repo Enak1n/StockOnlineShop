@@ -176,7 +176,37 @@ const MainPage = () => {
 					<img src='images/jordanmay2.webp' />
 				</div>
 			</div>
-		</div>	
+
+			<div className='flex justify-between flex-row-reverse pt-8'>
+				<div className='relative w-8/12'>
+					<img src ='images/UGG-Tazz-Slippers_SecondaryA_EN.webp' className='w-full h-full'/>
+				</div>
+				<div className='relative w-4/12'>
+					<img src='images/Gifts_For_Luxe-Editorial-Phase3-ENSecondaryB_copy.webp'/>
+				</div>
+			</div>
+
+			<div className='pt-7 flex justify-between items-center mt-6 mb-4'>
+				<h2 className='flex font-lobster w-[240px] text-[18px]'>
+					Top Trading Cards
+					<QuestionCircleOutlined className='ml-2 cursor-pointer' />
+				</h2>
+				<Link to=''>
+					<div className='flex items-center ml-auto'>
+						<span className='w-[70px] font-lobster text-green-700'>
+							See All
+						</span>
+						<TbArrowNarrowRight />
+					</div>
+				</Link>			
+			</div>
+
+			<div className='flex flex-row space-x-4 pt-4'>
+				{trendingSneakers.map(item => (
+					<ItemGrid key={item.id.toString()} item_data={item} sold={true} />
+				))}
+			</div>
+		</div>	 
 	)
 }
 
