@@ -38,5 +38,13 @@ namespace CatalogAPI.Controllers
             return Ok(shuffledTrendingSneakers);
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetByFilter(Category category)
+        {
+            var res = await _unitOfWork.Items.FindRange(i => i.Category == category);
+
+            return Ok(res);
+        }
+
     }
 }

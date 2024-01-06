@@ -10,5 +10,6 @@
         public double LastPrice { get; set; }
         public Guid OwnerId { get; set; }
         public int Sold { get; set; }
+        public Category Category { get; set; }
     }
 }

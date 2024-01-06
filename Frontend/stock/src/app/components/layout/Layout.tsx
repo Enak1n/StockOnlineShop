@@ -4,12 +4,14 @@ import { FC } from 'react'
 
 interface ILayoutProps {
 	children: any
+	hide: any
 }
-const Layout: FC<ILayoutProps> = ({ children }) => {
+const Layout: FC<ILayoutProps> = ({ children, hide }) => {
+	console.log('hui', hide)
 	return (
 		<>
 			<div>
-				<Header />
+				{!hide && <Header />}			
 				<Footer />
 			</div>
 			<main>{children}</main>

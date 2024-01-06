@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 const Nav = () => {
 	return (
-		<div >
+		<div className='pt-[100px]' >
 			<nav>
 				<ul className='flex justify-center font-lobster'>
 					<Link to='/sneakers'>

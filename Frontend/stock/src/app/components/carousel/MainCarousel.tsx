@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import Slider from 'react-slick'
 import {
 	IoIosArrowDroprightCircle,
@@ -10,6 +10,7 @@ import 'slick-carousel/slick/slick-theme.css'
 const MainCarousel = () =>{
     const [canGoNext, setCanGoNext] = useState<boolean>(true)
 	const [canGoPrev, setCanGoPrev] = useState<boolean>(false)
+	const [currentSlide, setCurrentSlide] = useState<number>(0)
 
     let sliderRef = useRef<Slider>(null)
 
@@ -23,11 +24,12 @@ const MainCarousel = () =>{
         afterChange: (index: number) => {
 			setCanGoPrev(index !== 0)
 			setCanGoNext(index !== 4)
+			setCurrentSlide(index);
 		},
 		beforeChange: (oldIndex: number, newIndex: number) => {
-			// Set visibility before the slide changes
 			setCanGoPrev(newIndex !== 0)
 			setCanGoNext(newIndex !== 4)
+			setCurrentSlide(newIndex);
 		},
 	}
 
@@ -54,6 +56,22 @@ const MainCarousel = () =>{
 					<img src='/images/Holiday_Accessories-Editorial-Phase2-ENPrimary_Desktop_copy_22.webp'/>
 				</div>                 
 			</Slider>
+			<div style={{ display: 'flex', justifyContent: 'center'}}>
+                {Array(4).fill(null).map((_, index) => (
+                    <div 
+                        key={index}
+                        style={{
+                            width: '10px',
+                            height: '10px',
+                            borderRadius: '50%',
+                            margin: '0 5px',
+                            backgroundColor: currentSlide === index ? 'blue' : 'gray', 
+                            cursor: 'pointer'
+                        }}
+                        onClick={() => sliderRef?.current?.slickGoTo(index)}
+                    />
+                ))}
+            </div>
         </>
     )
 }

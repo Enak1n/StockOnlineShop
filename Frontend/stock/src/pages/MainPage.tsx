@@ -12,6 +12,7 @@ import MainCarousel from '../app/components/carousel/MainCarousel'
 const MainPage = () => {
 	const [recommendSneakers, setRecommendSneakers] = useState<IItem[]>([])
 	const [trendingSneakers, setTrendingSneakers] = useState<IItem[]>([])
+	const [items, setItems] = useState<IItem[]>([])
 
 	useEffect(() => {
 		try {
@@ -23,8 +24,13 @@ const MainPage = () => {
 				const response = await ItemService.getTrendingSneakers()
 				setTrendingSneakers([...trendingSneakers, ...response.data])
 			}
+			const fetchByFilter = async () => {
+				const response = await ItemService.getByFilter(1)
+				setItems([...items, ...response.data])
+			}
 			fetchData()
 			fetchTrending()
+			fetchByFilter()
 		} catch (e) {
 			console.log(e)
 		}
@@ -37,7 +43,7 @@ const MainPage = () => {
 				<MainCarousel/>
 			</div>
 
-			<div>
+			<div className='pt-4'>
 				<h2 className='flex font-lobster w-[225px] text-[18px]'>
 					Recommend For You
 					<QuestionCircleOutlined className='ml-2 cursor-pointer' />
@@ -110,7 +116,67 @@ const MainPage = () => {
 					<Carousel />
 				</div>
 			</div>
-		</div>
+
+			<div className='pt-7 flex justify-between items-center mt-6 mb-4'>
+				<h2 className='flex font-lobster w-[240px] text-[18px]'>
+					Hot Electronics
+					<QuestionCircleOutlined className='ml-2 cursor-pointer' />
+				</h2>
+				<Link to=''>
+					<div className='flex items-center ml-auto'>
+						<span className='w-[70px] font-lobster text-green-700'>
+							See All
+						</span>
+						<TbArrowNarrowRight />
+					</div>
+				</Link>
+			</div>
+
+			<div className='flex flex-row space-x-4 pt-4'>
+				{items.map(item => (
+					<ItemGrid key={item.id.toString()} item_data={item} sold={true} />
+				))}
+			</div>
+
+			<div className='pt-7'>
+				<MainCarousel/>
+			</div>
+
+			
+			<div className='pt-7 flex justify-between items-center mt-6 mb-4'>
+				<h2 className='flex font-lobster w-[240px] text-[18px]'>
+					Featured Collectibles
+					<QuestionCircleOutlined className='ml-2 cursor-pointer' />
+				</h2>
+				<Link to=''>
+					<div className='flex items-center ml-auto'>
+						<span className='w-[70px] font-lobster text-green-700'>
+							See All
+						</span>
+						<TbArrowNarrowRight />
+					</div>
+				</Link>			
+			</div>
+
+			<div className='flex flex-row space-x-4 pt-4'>
+				{trendingSneakers.map(item => (
+					<ItemGrid key={item.id.toString()} item_data={item} sold={true} />
+				))}
+			</div>
+
+			<div className='pt-5'>
+				<h2 className='flex font-lobster w-[225px] text-[18px]'>
+				Popular Footwear Brands
+				</h2>
+				<div className='flex flex-row space-x-5 pt-4'>
+					<img src='images/newbalancemay.webp' />
+					<img src='images/nikemay.webp' />
+					<img src='images/crocsmay.webp' />
+					<img src='images/adidasmay.webp' />
+					<img src='images/jordanmay2.webp' />
+				</div>
+			</div>
+		</div>	
 	)
 }
 
