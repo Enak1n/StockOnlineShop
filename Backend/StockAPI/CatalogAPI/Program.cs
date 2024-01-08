@@ -11,7 +11,8 @@ var config = builder.Configuration;
 
 // Add services to the container.
 var databaseConnection = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<Context>(option => option.UseNpgsql(databaseConnection));
+builder.Services.AddDbContext<Context>(option => option.UseNpgsql(databaseConnection,
+                                                                  b => b.MigrationsAssembly("CatalogAPI")));
 
 builder.Services.AddAuthentication(x =>
 {

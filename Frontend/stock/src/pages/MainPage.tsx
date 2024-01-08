@@ -68,7 +68,7 @@ const MainPage = () => {
 				</div>
 			</div>
 
-			<div className='pt-8 flex justify-between items-center mt-6 mb-4'>
+			<div className='flex justify-between items-center mt-6 mb-4'>
 				<h2 className='flex font-lobster w-[225px] text-[18px]'>
 					Trending Sneakers
 					<QuestionCircleOutlined className='ml-2 cursor-pointer' />
@@ -85,7 +85,7 @@ const MainPage = () => {
 				))}
 			</div>
 
-			<div className='pt-7 flex justify-between items-center mt-6 mb-4'>
+			<div className='flex justify-between items-center mt-6 mb-4'>
 				<h2 className='flex font-lobster w-[240px] text-[18px]'>
 					Most Popular Around You
 					<QuestionCircleOutlined className='ml-2 cursor-pointer' />
@@ -105,7 +105,7 @@ const MainPage = () => {
 				))}
 			</div>
 
-			<div className='pt-8'>
+			<div className='pt-4'>
 				<h2 className='flex font-lobster w-[240px] h-[24px] text-[18px]'>
 					As Seen On Instaram
 				</h2>
@@ -117,7 +117,7 @@ const MainPage = () => {
 				</div>
 			</div>
 
-			<div className='pt-7 flex justify-between items-center mt-6 mb-4'>
+			<div className='flex justify-between items-center mt-6 mb-4'>
 				<h2 className='flex font-lobster w-[240px] text-[18px]'>
 					Hot Electronics
 					<QuestionCircleOutlined className='ml-2 cursor-pointer' />
@@ -138,12 +138,12 @@ const MainPage = () => {
 				))}
 			</div>
 
-			<div className='pt-7'>
+			<div className='pt-4'>
 				<MainCarousel/>
 			</div>
 
 			
-			<div className='pt-7 flex justify-between items-center mt-6 mb-4'>
+			<div className='flex justify-between items-center mt-6 mb-4'>
 				<h2 className='flex font-lobster w-[240px] text-[18px]'>
 					Featured Collectibles
 					<QuestionCircleOutlined className='ml-2 cursor-pointer' />
@@ -186,7 +186,7 @@ const MainPage = () => {
 				</div>
 			</div>
 
-			<div className='pt-7 flex justify-between items-center mt-6 mb-4'>
+			<div className='flex justify-between items-center mt-6 mb-4'>
 				<h2 className='flex font-lobster w-[240px] text-[18px]'>
 					Top Trading Cards
 					<QuestionCircleOutlined className='ml-2 cursor-pointer' />
@@ -205,6 +205,19 @@ const MainPage = () => {
 				{trendingSneakers.map(item => (
 					<ItemGrid key={item.id.toString()} item_data={item} sold={true} />
 				))}
+			</div>
+
+			<div className='flex justify-between items-center mt-6 mb-4'>
+				<h1 className='flex w-[240px] text-[25px]'>
+					From The Magazine
+				</h1>
+				<Link to=''>
+					<div className='flex items-center ml-auto'>
+						<span className='w-full text-green-700'>
+							View All News Articles
+						</span>
+					</div>
+				</Link>			
 			</div>
 		</div>	 
 	)

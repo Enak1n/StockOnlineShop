@@ -12,6 +12,6 @@ namespace StockAPI.Domain.DataBase
 
         public DbSet<Item> Items { get; set; }
         public DbSet<User> Users { get; set; }
-
+        public DbSet<Article> Articles { get; set; }
     }
 }

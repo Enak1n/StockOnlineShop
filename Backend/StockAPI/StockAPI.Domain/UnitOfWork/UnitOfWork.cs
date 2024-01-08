@@ -13,15 +13,18 @@ namespace StockAPI.Domain.UnitOfWork
             _context = context;
             Items = new ItemRepository(context);
             Users = new UserRepository(context);
+            Articles = new ArticleRepository(context);
         }
 
         public IItemRepository Items { get; private set;}
         public IUserRepository Users { get; private set;}
+        public IArticleRepository Articles { get; private set; }
 
-        public UnitOfWork(IItemRepository itemRepository, IUserRepository userRepository)
+        public UnitOfWork(IItemRepository itemRepository, IUserRepository userRepository, IArticleRepository articleRepository)
         {
             Items = itemRepository;
             Users = userRepository;
+            Articles = articleRepository;
         }
 
         public async Task Save()

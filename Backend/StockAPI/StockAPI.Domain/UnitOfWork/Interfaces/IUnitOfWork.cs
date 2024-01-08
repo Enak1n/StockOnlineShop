@@ -10,6 +10,7 @@ namespace StockAPI.Domain.UnitOfWork.Interfaces
     {
         IUserRepository Users { get; }
         IItemRepository Items { get; }
+        IArticleRepository Articles { get; }
 
         Task Save();
     }
